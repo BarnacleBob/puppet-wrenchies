@@ -7,6 +7,6 @@ class wrenchies::role::ratchet {
     setting => 'registerName',
     value   => 'LegalTender',
     notify  => Service['mumble-server'],
-    require => Package['mumble-server'],
+    require => File['/etc/mumble-server.ini'],
   }
 }
