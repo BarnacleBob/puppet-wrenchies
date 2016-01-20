@@ -1,0 +1,3 @@
+class wrenchies::role::master {
+
+}
