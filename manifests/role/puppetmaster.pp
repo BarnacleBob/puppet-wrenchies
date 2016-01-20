@@ -5,7 +5,7 @@ class wrenchies::role::puppetmaster {
     section => 'master',
     setting => 'hiera_config',
     value   => '/etc/puppetlabs/hiera.yaml',
+    notify  => Class["Puppet_enterprise::Master::Puppetserver"],
   }
 
-  Ini_setting["hieraconf"] ~> Service <| title == $master_service |>
 }
