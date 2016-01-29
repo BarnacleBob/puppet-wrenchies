@@ -1,5 +1,4 @@
 class wrenchies::role::legaltender::mumble {
-
   class { '::mumble':
     ppa      => true,
     ssl_key  => '/data/ssl/mumble/lt.key',
