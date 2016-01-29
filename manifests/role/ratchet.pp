@@ -1,12 +1,11 @@
 class wrenchies::role::ratchet {
-  # set mumble root name
-
-  ini_setting { 'mumble root name':
-    ensure  => present,
-    path    => '/etc/mumble-server.ini',
-    setting => 'registerName',
-    value   => 'LegalTender',
-    notify  => Service['mumble-server'],
-    require => File['/etc/mumble-server.ini'],
+  dir { [
+    '/data/',
+    '/data/logs',
+    '/data/vhosts',
+    ]:
+      ensure => 'directory',
+      owner  => 'root',
+      mode   => '0755',
   }
 }
