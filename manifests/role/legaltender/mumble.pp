@@ -13,6 +13,7 @@ class wrenchies::role::legaltender::mumble {
   }
 
   file { '/data/ssl/mumble/lt.key':
+    ensure => 'present',
     owner => 'mumble-server',
     group => 'mumble-server',
     mode  => '0600',
@@ -20,6 +21,7 @@ class wrenchies::role::legaltender::mumble {
   }
 
   file { '/data/ssl/mumble/lt.cert':
+    ensure => 'present',
     owner => 'mumble-server',
     group => 'mumble-server',
     mode  => '0600',
