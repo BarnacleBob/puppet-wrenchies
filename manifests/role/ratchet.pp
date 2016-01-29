@@ -1,5 +1,5 @@
 class wrenchies::role::ratchet {
-  dir { [
+  file { [
     '/data/',
     '/data/logs',
     '/data/vhosts',
