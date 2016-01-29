@@ -1,4 +1,7 @@
-class wrenchies::role::legaltender::mumble {
+class wrenchies::role::legaltender::mumble(
+  $ssl_cert,
+  $ssl_key,
+){
   class { '::mumble':
     ppa           => true,
     ssl_key       => '/data/ssl/mumble/lt.key',
@@ -18,7 +21,7 @@ class wrenchies::role::legaltender::mumble {
     owner => 'mumble-server',
     group => 'mumble-server',
     mode  => '0600',
-    content => $::legaltender_key,
+    content => $ssl_key,
   }
 
   file { '/data/ssl/mumble/lt.cert':
@@ -26,6 +29,6 @@ class wrenchies::role::legaltender::mumble {
     owner => 'mumble-server',
     group => 'mumble-server',
     mode  => '0600',
-    content => $::legaltender_cert,
+    content => $ssl_cert,
   }
 }
