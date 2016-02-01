@@ -1,6 +1,6 @@
 class wrenchies::role::legaltender::smf {
   class { '::smforum':
-    user           => 'nobody',
+    user           => 'nginx',
     document_root  => '/opt/smforum',
     manage_mysql   => true,
     mysql_user     => 'smforum',
@@ -14,9 +14,21 @@ class wrenchies::role::legaltender::smf {
     vhost_type     => 'nginx',
     vhost_ssl_key  => '/data/ssl/nginx/lt.key',
     vhost_ssl_cert => '/data/ssl/nginx/lt.cert',
+    require        => [
+      File['/opt/smforum'],
+      File['/data/ssl/nginx/lt.key'],
+      File['/data/ssl/nginx/lt.cert']
+    ],
   }
 
   include '::nginx'
+
+  file { '/opt/smforum':
+    ensure => 'directory',
+    owner  => 'nginx',
+    group  => 'nginx',
+    mode   => '0755',
+  }
 
   nginx::resource::vhost { 'www.legaltender.net':
     ensure              => present,
