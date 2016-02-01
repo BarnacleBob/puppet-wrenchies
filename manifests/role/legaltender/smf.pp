@@ -26,23 +26,23 @@ class wrenchies::role::legaltender::smf {
 
   file { '/data/ssl/nginx':
     ensure => 'directory',
-    owner  => 'nginx-server',
-    group  => 'nginx-server',
+    owner  => 'nginx',
+    group  => 'nginx',
     mode   => '0700',
   }
 
   file { '/data/ssl/nginx/lt.key':
     ensure => 'present',
-    owner => 'nginx-server',
-    group => 'nginx-server',
+    owner => 'nginx',
+    group => 'nginx',
     mode  => '0600',
     content => hiera("legaltender_key"),
   }
 
   file { '/data/ssl/nginx/lt.cert':
     ensure => 'present',
-    owner => 'nginx-server',
-    group => 'nginx-server',
+    owner => 'nginx',
+    group => 'nginx',
     mode  => '0600',
     content => hiera("legaltender_cert"),
   }
