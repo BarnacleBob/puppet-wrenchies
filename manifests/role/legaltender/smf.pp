@@ -1,6 +1,6 @@
 class wrenchies::role::legaltender::smf {
   class { '::smforum':
-    user           => 'nginx',
+    user           => 'www-data',
     document_root  => '/opt/smforum',
     manage_mysql   => true,
     mysql_user     => 'smforum',
@@ -25,8 +25,8 @@ class wrenchies::role::legaltender::smf {
 
   file { '/opt/smforum':
     ensure => 'directory',
-    owner  => 'nginx',
-    group  => 'nginx',
+    owner  => 'www-data',
+    group  => 'www-data',
     mode   => '0755',
   }
 
@@ -38,23 +38,23 @@ class wrenchies::role::legaltender::smf {
 
   file { '/data/ssl/nginx':
     ensure => 'directory',
-    owner  => 'nginx',
-    group  => 'nginx',
+    owner  => 'www-data',
+    group  => 'www-data',
     mode   => '0700',
   }
 
   file { '/data/ssl/nginx/lt.key':
     ensure => 'present',
-    owner => 'nginx',
-    group => 'nginx',
+    owner => 'www-data',
+    group => 'www-data',
     mode  => '0600',
     content => hiera("legaltender_key"),
   }
 
   file { '/data/ssl/nginx/lt.cert':
     ensure => 'present',
-    owner => 'nginx',
-    group => 'nginx',
+    owner => 'www-data',
+    group => 'www-data',
     mode  => '0600',
     content => hiera("legaltender_cert"),
   }
