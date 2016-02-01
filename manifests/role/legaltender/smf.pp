@@ -59,3 +59,4 @@ class wrenchies::role::legaltender::smf {
     content => hiera("legaltender_cert"),
   }
 }
+
