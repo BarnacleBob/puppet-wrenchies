@@ -21,6 +21,7 @@ class wrenchies::role::legaltender::smf {
     ],
   }
 
+
   include '::nginx'
 
   file { '/opt/smforum':
