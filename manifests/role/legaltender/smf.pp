@@ -21,6 +21,7 @@ class wrenchies::role::legaltender::smf {
     ],
   }
 
+
   include '::nginx'
 
   file { '/opt/smforum':
@@ -59,4 +60,5 @@ class wrenchies::role::legaltender::smf {
     content => hiera("legaltender_cert"),
   }
 }
+
 
